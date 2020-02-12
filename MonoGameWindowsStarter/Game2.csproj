@@ -75,12 +75,12 @@
     <Content Include="Level2WallPlacements.txt" />
     <Content Include="Level3SpikePlacements.txt" />
     <Content Include="Level3WallPlacements.txt" />
-    <None Include="Resources\Level3WallPlacements.txt" />
-    <None Include="Resources\Level3SpikePlacements.txt" />
-    <None Include="Resources\Level2WallPlacements.txt" />
-    <None Include="Resources\Level2SpikePlacements.txt" />
-    <None Include="Resources\Level1WallPlacements.txt" />
-    <None Include="Resources\Level1SpikePlacements.txt" />
+    <EmbeddedResource Include="Resources\Level3WallPlacements.txt" />
+    <EmbeddedResource Include="Resources\Level3SpikePlacements.txt" />
+    <EmbeddedResource Include="Resources\Level2WallPlacements.txt" />
+    <EmbeddedResource Include="Resources\Level2SpikePlacements.txt" />
+    <EmbeddedResource Include="Resources\Level1WallPlacements.txt" />
+    <EmbeddedResource Include="Resources\Level1SpikePlacements.txt" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
