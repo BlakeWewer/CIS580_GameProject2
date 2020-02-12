@@ -63,67 +63,68 @@ namespace MonoGameWindowsStarter
 
             List<Tuple<int, int>> level1WallPositions = new List<Tuple<int, int>>();
             List<Tuple<int, int>> level1SpikePositions = new List<Tuple<int, int>>();
-            StreamReader wallReader1 = new StreamReader("../../../../../Level1WallPlacements.txt");
-            string line;
+            //StreamReader wallReader1 = new StreamReader("../../../../../Level1WallPlacements.txt");
+            string rawWall1 = Properties.Resources.Level1WallPlacements;
+            string rawSpike1 = Properties.Resources.Level1SpikePlacements;
             string[] values;
-            while ((line = wallReader1.ReadLine()) != null)
+            string[] line = rawWall1.Split('\n');            
+            foreach (string pair in line)
             {
-                values = line.Split(' ');
+                values = pair.Split(' ');
                 level1WallPositions.Add(new Tuple<int, int>(Convert.ToInt32(values[0]),
                                                             Convert.ToInt32(values[1])));
             }
-            wallReader1.Close();
-            StreamReader spikeReader1 = new StreamReader("../../../../../Level1SpikePlacements.txt");
-            while ((line = spikeReader1.ReadLine()) != null)
+            line = rawSpike1.Split('\n');
+            foreach (string pair in line)
             {
-                values = line.Split(' ');
+                values = pair.Split(' ');
                 level1SpikePositions.Add(new Tuple<int, int>(Convert.ToInt32(values[0]),
                                                             Convert.ToInt32(values[1])));
             }
-            spikeReader1.Close();
             level1.Initialize(level1WallPositions, level1SpikePositions, new Vector2(1, 351));
             levels.Add(0, level1);
 
+
             List<Tuple<int, int>> level2WallPositions = new List<Tuple<int, int>>();
             List<Tuple<int, int>> level2SpikePositions = new List<Tuple<int, int>>();
-            StreamReader wallReader2 = new StreamReader("../../../../../Level2WallPlacements.txt");
-            while ((line = wallReader2.ReadLine()) != null)
+            string rawWall2 = Properties.Resources.Level2WallPlacements;
+            string rawSpike2 = Properties.Resources.Level2SpikePlacements;
+            line = rawWall2.Split('\n');
+            foreach (string pair in line)
             {
-                values = line.Split(' ');
+                values = pair.Split(' ');
                 level2WallPositions.Add(new Tuple<int, int>(Convert.ToInt32(values[0]),
                                                             Convert.ToInt32(values[1])));
             }
-            wallReader2.Close();
-            StreamReader spikeReader2 = new StreamReader("../../../../../Level2SpikePlacements.txt");
-            while ((line = spikeReader2.ReadLine()) != null)
+            line = rawSpike2.Split('\n');
+            foreach (string pair in line)
             {
-                values = line.Split(' ');
+                values = pair.Split(' ');
                 level2SpikePositions.Add(new Tuple<int, int>(Convert.ToInt32(values[0]),
                                                             Convert.ToInt32(values[1])));
             }
-            spikeReader2.Close();
             level2.Initialize(level2WallPositions, level2SpikePositions, new Vector2(1, 351));
             level2.MakeWallBombable(new Tuple<int, int>(11, 10));
             levels.Add(1, level2);
 
             List<Tuple<int, int>> level3WallPositions = new List<Tuple<int, int>>();
             List<Tuple<int, int>> level3SpikePositions = new List<Tuple<int, int>>();
-            StreamReader wallReader3 = new StreamReader("../../../../../Level3WallPlacements.txt");
-            while ((line = wallReader3.ReadLine()) != null)
+            string rawWall3 = Properties.Resources.Level3WallPlacements;
+            string rawSpike3 = Properties.Resources.Level3SpikePlacements;
+            line = rawWall3.Split('\n');
+            foreach (string pair in line)
             {
-                values = line.Split(' ');
+                values = pair.Split(' ');
                 level3WallPositions.Add(new Tuple<int, int>(Convert.ToInt32(values[0]),
                                                             Convert.ToInt32(values[1])));
             }
-            wallReader3.Close();
-            StreamReader spikeReader3 = new StreamReader("../../../../../Level3SpikePlacements.txt");
-            while ((line = spikeReader3.ReadLine()) != null)
+            line = rawSpike3.Split('\n');
+            foreach (string pair in line)
             {
-                values = line.Split(' ');
+                values = pair.Split(' ');
                 level3SpikePositions.Add(new Tuple<int, int>(Convert.ToInt32(values[0]),
                                                             Convert.ToInt32(values[1])));
             }
-            spikeReader3.Close();
             level3.Initialize(level3WallPositions, level3SpikePositions, new Vector2(1, 651));
             level3.MakeWallBombable(new Tuple<int, int>(19, 7));
             levels.Add(2, level3);
@@ -174,18 +175,18 @@ namespace MonoGameWindowsStarter
 
             oldkeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
-            //if (keyboardState.IsKeyDown(Keys.P) && !oldkeyboardState.IsKeyDown(Keys.P))
-            //{
-            //    NextLevel();
-            //}
-            //if (keyboardState.IsKeyDown(Keys.Q) && !oldkeyboardState.IsKeyDown(Keys.Q))
-            //{
-            //    PreviousLevel();
-            //}
-            //if (keyboardState.IsKeyDown(Keys.A) && !oldkeyboardState.IsKeyDown(Keys.A))
-            //{
-            //    player.Position = new Vector2(19*50 + 1, 4*50 + 1);
-            //}
+            if (keyboardState.IsKeyDown(Keys.P) && !oldkeyboardState.IsKeyDown(Keys.P))
+            {
+                NextLevel();
+            }
+            if (keyboardState.IsKeyDown(Keys.Q) && !oldkeyboardState.IsKeyDown(Keys.Q))
+            {
+                PreviousLevel();
+            }
+            if (keyboardState.IsKeyDown(Keys.A) && !oldkeyboardState.IsKeyDown(Keys.A))
+            {
+                player.Position = new Vector2(19 * 50 + 1, 4 * 50 + 1);
+            }
 
             if (!win && !game_over)
             {
